@@ -15,4 +15,16 @@ public class Menu {
             System.out.println("Vous avez choisi d'incarner un/e  magicien/ne !");
         }
     }
+
+    void askCharacterName() {
+        Scanner nameChoice = new Scanner( System.in );
+        String input;
+
+        System.out.println("Choisissez votre nom : ");
+        input = nameChoice.nextLine();
+
+        System.out.println();
+
+
+    }
 }
