@@ -1,9 +1,14 @@
 import java.util.Scanner;
 
 public class Menu {
+
+    public Menu() {
+
+    }
+
     String askCharacterType() {
         Scanner typeChoice = new Scanner( System.in );
-        int input;
+        Integer input;
         String characterType;
 
         System.out.println("Choisissez votre type d'aventurier : 1 pour guerrier, 2 pour magicien : ");
@@ -12,12 +17,12 @@ public class Menu {
         if (input == 1) {
             System.out.println("Vous avez choisi d'incarner un guerrier !");
             characterType = Personnage.GUERRIER;
-        }
-        else if (input == 2) {
+        } else if (input == 2) {
             System.out.println("Vous avez choisi d'incarner un magicien !");
             characterType = Personnage.MAGICIEN;
         } else {
-            characterType = "bouseux";
+            System.out.println("Pas envie d'être un magicien ni un guerrier? Vous serez donc une limace.");
+            characterType = Personnage.LIMACE;
         }
         return characterType;
     }
@@ -45,20 +50,9 @@ public class Menu {
         return input;
     }
 
-    Personnage displayInfosOrModifyCharacter(int input, String type, String name) {
-        if (input == 1){
-            System.out.println("Votre avatar s'appelle "+ name + " et c'est un " + type + ".");
-        } else if (input == 2) {
-            type = askCharacterType();
-            name = askCharacterName();
-            int playerChoice = this.askToDisplayInfosOrModifyCharacter();
-            displayInfosOrModifyCharacter(playerChoice, type, name);
-        } else {
-            System.out.println("A bientôt !");
+    void displayCharacterInfo(Personnage player1) {
+        System.out.println(player1.toString());
         }
-        Personnage player = new Personnage(type, name);
-        return player;
-    }
 
 
 }
