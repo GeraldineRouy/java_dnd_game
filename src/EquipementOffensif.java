@@ -7,7 +7,7 @@ public class EquipementOffensif {
             offensiveEquipementType = "une arme";
         } else if (characterType.equals(Personnage.MAGICIEN)) {
             offensiveEquipementType = "un sort";
-        } else if (characterType.equals(Personnage.LIMACE)){
+        } else if (characterType.equals(Personnage.PANGOLIN)){
             offensiveEquipementType = "un caillou";
         }
     }

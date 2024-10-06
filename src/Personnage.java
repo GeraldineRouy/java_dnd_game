@@ -1,8 +1,9 @@
 public class Personnage {
     public static final String GUERRIER = "guerrier";
     public static final String MAGICIEN = "magicien";
-    public static final String LIMACE = "limace";
+    public static final String PANGOLIN = "pangolin";
     private String name;
+
     private String type;
     private int healthPoints;
     private int strengthPoints;
@@ -11,13 +12,13 @@ public class Personnage {
 
     public Personnage(){
         this.name = "Odeline Fion";
-        this.type = LIMACE;
+        this.type = PANGOLIN;
         defineSpecsByCharacterType();
     }
 
     public Personnage(String name){
         this.name = name;
-        this.type = LIMACE;
+        this.type = PANGOLIN;
         defineSpecsByCharacterType();
     }
 
@@ -41,8 +42,8 @@ public class Personnage {
         } else {
             this.healthPoints = 1;
             this.strengthPoints = 1;
-            this.offensiveEquipment = new EquipementOffensif(LIMACE);
-            this.defensiveEquipment = new EquipementDefensif(LIMACE);
+            this.offensiveEquipment = new EquipementOffensif(PANGOLIN);
+            this.defensiveEquipment = new EquipementDefensif(PANGOLIN);
         }
     }
 
