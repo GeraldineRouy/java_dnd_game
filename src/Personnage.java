@@ -12,24 +12,22 @@ public class Personnage {
     public Personnage(){
         this.name = "Odeline Fion";
         this.type = LIMACE;
-        this.healthPoints = 1;
-        this.strengthPoints = 1;
-        this.offensiveEquipment = new EquipementOffensif(LIMACE);
-        this.defensiveEquipment = new EquipementDefensif(LIMACE);
+        defineSpecsByCharacterType();
     }
 
     public Personnage(String name){
         this.name = name;
         this.type = LIMACE;
-        this.healthPoints = 1;
-        this.strengthPoints = 1;
-        this.offensiveEquipment = new EquipementOffensif(LIMACE);
-        this.defensiveEquipment = new EquipementDefensif(LIMACE);
+        defineSpecsByCharacterType();
     }
 
     public Personnage(String type, String name){
         this.name = name;
         this.type = type;
+        defineSpecsByCharacterType();
+    }
+
+    public void defineSpecsByCharacterType() {
         if (type.equals(GUERRIER)){
             this.healthPoints = 10;
             this.strengthPoints = 10;
@@ -40,7 +38,7 @@ public class Personnage {
             this.strengthPoints = 15;
             this.offensiveEquipment = new EquipementOffensif(MAGICIEN);
             this.defensiveEquipment = new EquipementDefensif(MAGICIEN);
-        } else if (type.equals(LIMACE)){
+        } else {
             this.healthPoints = 1;
             this.strengthPoints = 1;
             this.offensiveEquipment = new EquipementOffensif(LIMACE);

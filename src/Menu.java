@@ -7,11 +7,12 @@ public class Menu {
     }
 
     String askCharacterType() {
-        Scanner typeChoice = new Scanner( System.in );
+        Scanner typeChoice = new Scanner(System.in);
         Integer input;
         String characterType;
 
         System.out.println("Choisissez votre type d'aventurier : 1 pour guerrier, 2 pour magicien : ");
+
         input = typeChoice.nextInt();
 
         if (input == 1) {
@@ -28,7 +29,7 @@ public class Menu {
     }
 
     String askCharacterName() {
-        Scanner nameChoice = new Scanner( System.in );
+        Scanner nameChoice = new Scanner(System.in);
         String characterName;
 
         System.out.println("Quel est le nom de votre aventurier?");
@@ -38,7 +39,7 @@ public class Menu {
     }
 
     int askToDisplayInfosOrModifyCharacter() {
-        Scanner choice = new Scanner( System.in );
+        Scanner choice = new Scanner(System.in);
         int input;
 
         System.out.println("Que souhaitez-vous faire? " +
@@ -50,9 +51,9 @@ public class Menu {
         return input;
     }
 
-    void displayCharacterInfo(Personnage player1) {
-        System.out.println(player1.toString());
-        }
+    void displayCharacterInfo(Personnage player) {
+        System.out.println(player.toString());
+    }
 
 
 }

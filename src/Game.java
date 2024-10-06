@@ -1,41 +1,50 @@
 public class Game {
     Personnage player1 ;
-    Menu player1Menu = new Menu();
+    Menu menu;
 
     public Game() {
+        menu = new Menu();
         player1 = characterCreation();
+
         verifyOrModifyCharacterOrQuit(player1);
 
     }
 
     public Personnage characterCreation() {
 
-        String characterType = player1Menu.askCharacterType();
+        String characterType = menu.askCharacterType();
 
-        String characterName = player1Menu.askCharacterName();
+        String characterName = menu.askCharacterName();
 
-        Personnage player1 = new Personnage(characterType, characterName);
-        return player1;
+        Personnage newPlayer = new Personnage(characterType, characterName);
+
+        return newPlayer;
     }
 
     public void modifyCharacter(String characterType, String characterName) {
         player1.setCharacterType(characterType);
         player1.setCharacterName(characterName);
+        player1.defineSpecsByCharacterType();
     }
 
-    public void verifyOrModifyCharacterOrQuit(Personnage player1) {
-        int player1Choice = player1Menu.askToDisplayInfosOrModifyCharacter();
+    public void verifyOrModifyCharacterOrQuit(Personnage player) {
 
-        if (player1Choice == 1) {
-            player1Menu.displayCharacterInfo(player1);
-        } else if (player1Choice == 2) {
-            String player1Type = player1Menu.askCharacterType();
-            String player1Name = player1Menu.askCharacterName();
-            modifyCharacter(player1Type, player1Name);
+        int playerChoice = menu.askToDisplayInfosOrModifyCharacter();
 
-        } else if (player1Choice == 3) {
-            //trouver comment terminer le jeu
-        }
+       while (playerChoice != 3 ) {
+
+           if (playerChoice == 1) {
+               menu.displayCharacterInfo(player);
+           } else if (playerChoice == 2) {
+               String player1Type = menu.askCharacterType();
+               String player1Name = menu.askCharacterName();
+               modifyCharacter(player1Type, player1Name);
+           }
+
+           playerChoice = menu.askToDisplayInfosOrModifyCharacter();
+       }
+
+        System.out.println("A bientôt !");
 
     }
 
