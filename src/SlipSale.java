@@ -1,4 +1,6 @@
 public class SlipSale extends EquipementDefensif{
 
-    private String name = "slip sale";
+    public SlipSale() {
+        this.name = "slip sale";
+    }
 }

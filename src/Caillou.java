@@ -1,4 +1,6 @@
 public class Caillou extends EquipementOffensif{
 
-    String name = "Caillou";
+    public Caillou() {
+        this.name = "caillou";
+    }
 }

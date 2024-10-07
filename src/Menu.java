@@ -92,6 +92,10 @@ public class Menu {
         return input;
     }
 
+    public void displayGameOver (String playerName) {
+        System.out.println("A bientôt " + playerName + " !");
+    }
+
     public void displayStarLine() {
         System.out.println("****************************************");
     }

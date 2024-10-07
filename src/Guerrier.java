@@ -4,13 +4,16 @@ public class Guerrier extends Personnage{
         super(GUERRIER, name);
         setHP(10);
         setStrength(10);
-        this.offensiveEquipment = new Arme();
-        this.defensiveEquipment = new Bouclier();
-        this.typeNumber = 1;
+        super.offensiveEquipment = new Arme();
+        super.defensiveEquipment = new Bouclier();
+        super.typeNumber = 1;
     }
 
+    @Override
     public String getType() {
         return GUERRIER;
     }
+
+
 
 }

@@ -14,4 +14,8 @@ public abstract class EquipementDefensif {
         this.name = name;
     }
 
+    public String toString () {
+        return this.name;
+    }
+
 }

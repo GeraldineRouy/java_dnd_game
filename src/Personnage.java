@@ -69,23 +69,13 @@ public abstract class Personnage {
         this.strengthPoints = strength;
     }
 
-    public String getOffensiveEquipment() {
-        return this.offensiveEquipment.getWeaponType();
-    }
-
-    public String getDefense() {
-        return this.defensiveEquipment.getDefenseType();
-    }
+    public abstract String getType();
 
     public String toString() {
-        String message = "Votre avatar s'appelle "+ name + ".";
-        if (this.typeNumber == 1) {
-            message = message + "\n Vous incarnez un fier " + GUERRIER + " !!!";
-        } else if (this.typeNumber == 2) {
-            message = message + "\n Vous incarnez un puissant " + MAGICIEN + " !!!";
-        } else {
-            message = message + "\n Vous incarnez un ... " + PANGOLIN + " ...";
-        }
+        String message = "Votre avatar s'appelle "+ name + "." +
+                "\n C'est un " + getType() + "." +
+                "\n Il attaque avec un/e " + offensiveEquipment + " et se défend avec un/e " + defensiveEquipment + ".";
+
         return message;
     }
 }

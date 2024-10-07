@@ -42,6 +42,7 @@ public class Game {
 
         int playerChoice = menu.displayMenu();
 
+        //TODO mettre en switch case
         while (playerChoice != 4) {
 
             if (playerChoice == 1) {
@@ -57,6 +58,7 @@ public class Game {
         }
 
         menu.displayStarLine();
+        //TODO méthode menu
         System.out.println("A bientôt !");
 
     }
@@ -74,7 +76,7 @@ public class Game {
 
         //vérifie sa position
         //si position - de 64 , relance le dé
-        while (playerPosition != 64) {
+        while (playerPosition < 64) {
             menu.displayStarLine();
 
             //lance le dé
@@ -85,20 +87,13 @@ public class Game {
             //avance le joueur
             playerPosition = playerPosition + diceRoll;
 
-            //si position + de 64, le joueur recule
-            if (playerPosition > 64) {
-                System.out.println("Oh non ! Vous avez dépassé la case 64!");
-                int stepBack = playerPosition - 64;
-                playerPosition = 64 - stepBack;
-
-            }
-            // le menu indique la position du joueur
+            //indique la nouvelle position du joueur
             menu.displayPlayerPosition(playerPosition);
 
         }
         menu.displayStarLine();
 
-        // si position = 64, gagné
+        // si position >= 64, gagné
         menu.displayEnd(player.getName());
 
         //choix entre recommencer ou quitter
@@ -107,7 +102,7 @@ public class Game {
 
         if (playerChoice == 2) {
             menu.displayStarLine();
-            System.out.println("A bientôt !");
+            menu.displayGameOver(player.getName());
             System.exit(0);
         }
 
