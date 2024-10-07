@@ -1,20 +1,16 @@
 public class Pangolin extends Personnage{
 
-    private String className = "pangolin";
-
     public Pangolin(String name){
-        super(name);
+        super(PANGOLIN, name);
         setHP(1);
         setStrength(1);
-        Caillou rock = new Caillou();
-        SlipSale dirtyPanty = new SlipSale();
+        this.offensiveEquipment = new Caillou();
+        this.defensiveEquipment = new SlipSale();
     }
 
-    public String getClassName() {
-        return className;
-    }
 
-    public void setClassName(String className) {
-        this.className = className;
+
+    public String getType() {
+        return PANGOLIN;
     }
 }

@@ -1,21 +1,18 @@
 public class Magicien extends Personnage{
 
-    private String className = "Magicien";
 
     public Magicien(String name) {
-        super(name);
+        super(MAGICIEN, name);
         setHP(6);
         setStrength(15);
-        Sort sort = new Sort();
-        Philtre philtre = new Philtre();
+        this.offensiveEquipment = new Sort();
+        this.defensiveEquipment = new Philtre();
+        this.typeNumber = 2;
     }
 
-    public String getClassName() {
-        return className;
+    public String getType() {
+        return MAGICIEN;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
 
 }

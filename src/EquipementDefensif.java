@@ -1,11 +1,17 @@
 public abstract class EquipementDefensif {
-    private String defensiveEquipementType;
+
+    protected String name;
 
     public EquipementDefensif() {
 
     }
 
-    public String getDefenseType() {
-        return this.defensiveEquipementType;
+    public String getName() {
+        return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

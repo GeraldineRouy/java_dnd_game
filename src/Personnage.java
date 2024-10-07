@@ -12,8 +12,6 @@ public abstract class Personnage {
     protected EquipementDefensif defensiveEquipment;
 
     public Personnage(){
-        this.name = "Odeline Fion";
-        this.type = PANGOLIN;
     }
 
     public Personnage(String name){

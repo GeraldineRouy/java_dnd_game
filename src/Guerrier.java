@@ -1,20 +1,16 @@
 public class Guerrier extends Personnage{
 
-    private String className = "Guerrier";
-
-    public Guerrier(String characterName){
-        super(characterName);
+    public Guerrier(String name){
+        super(GUERRIER, name);
         setHP(10);
         setStrength(10);
-        Arme weapon = new Arme();
-        Bouclier shield = new Bouclier();
+        this.offensiveEquipment = new Arme();
+        this.defensiveEquipment = new Bouclier();
+        this.typeNumber = 1;
     }
 
-    public String getClassName() {
-        return className;
+    public String getType() {
+        return GUERRIER;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
 }
