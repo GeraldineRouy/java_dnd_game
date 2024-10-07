@@ -6,29 +6,29 @@ public class Menu {
 
     }
 
-    public String askCharacterType() {
+    public int askCharacterType() {
         Scanner typeChoice = new Scanner(System.in);
-        Integer input;
-        String characterType;
+        int input;
 
-        System.out.println("Bienvenue, aventurier !\n" +
-                "\nQue souhaitez-vous incarner?" +
-                "\n 1 : un guerrier" +
-                "\n 2 : un magicien");
+        System.out.println("""
+                Bienvenue, aventurier !
+                
+                Que souhaitez-vous incarner?\
+                
+                 1 : un guerrier\
+                
+                 2 : un magicien""");
 
         input = typeChoice.nextInt();
 
         if (input == 1) {
             System.out.println("Vous avez choisi d'incarner un guerrier !");
-            characterType = Personnage.GUERRIER;
         } else if (input == 2) {
             System.out.println("Vous avez choisi d'incarner un magicien !");
-            characterType = Personnage.MAGICIEN;
         } else {
             System.out.println("Pas envie d'être un magicien ni un guerrier? Vous serez donc un pangolin!!!");
-            characterType = Personnage.PANGOLIN;
         }
-        return characterType;
+        return input;
     }
 
     public String askCharacterName() {

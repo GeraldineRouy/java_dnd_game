@@ -1,58 +1,63 @@
 import java.util.Random;
 
 public class Game {
-    Personnage player1 ;
+    Personnage player1;
     Menu menu;
 
     public Game() {
         menu = new Menu();
-        player1 = characterCreation();
 
-        startGame(player1);
+
+        startGame();
 
     }
 
     public Personnage characterCreation() {
         menu.displayStarLine();
 
-        String characterType = menu.askCharacterType();
+        int characterType = menu.askCharacterType();
 
         String characterName = menu.askCharacterName();
 
-        Personnage newPlayer = new Personnage(characterType, characterName);
+        Personnage character;
 
-        return newPlayer;
+        switch (characterType) {
+            case 1:
+                character = new Guerrier(characterName);
+                break;
+            case 2:
+                character = new Magicien(characterName);
+                break;
+            default:
+                character = new Pangolin(characterName);
+                break;
+        }
+        return character;
     }
 
-    public void modifyCharacter(String characterType, String characterName) {
-        player1.setCharacterType(characterType);
-        player1.setCharacterName(characterName);
-        player1.defineSpecsByCharacterType();
-    }
+    public void startGame() {
+        Personnage player = characterCreation();
 
-    public void startGame(Personnage player) {
         menu.displayStarLine();
 
         int playerChoice = menu.displayMenu();
 
-       while (playerChoice != 4 ) {
+        while (playerChoice != 4) {
 
-           if (playerChoice == 1) {
-               menu.displayCharacterInfo(player);
-           } else if (playerChoice == 2) {
-               String player1Type = menu.askCharacterType();
-               String player1Name = menu.askCharacterName();
-               modifyCharacter(player1Type, player1Name);
-           } else if (playerChoice == 3) {
-               menu.displayBeginning();
-               playGame(player);
-           }
+            if (playerChoice == 1) {
+                menu.displayCharacterInfo(player);
+            } else if (playerChoice == 2) {
+                player = characterCreation();
+            } else if (playerChoice == 3) {
+                menu.displayBeginning();
+                playGame(player);
+            }
 
-           playerChoice = menu.displayMenu();
-       }
+            playerChoice = menu.displayMenu();
+        }
 
-       menu.displayStarLine();
-       System.out.println("A bientôt !");
+        menu.displayStarLine();
+        System.out.println("A bientôt !");
 
     }
 
@@ -63,7 +68,7 @@ public class Game {
         return diceRoll;
     }
 
-    public void playGame (Personnage player) {
+    public void playGame(Personnage player) {
         //position initiale en case 1
         int playerPosition = 1;
 
@@ -94,7 +99,7 @@ public class Game {
         menu.displayStarLine();
 
         // si position = 64, gagné
-        menu.displayEnd(player.getCharacterName());
+        menu.displayEnd(player.getName());
 
         //choix entre recommencer ou quitter
         menu.displayStarLine();
