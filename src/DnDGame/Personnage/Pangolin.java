@@ -1,4 +1,9 @@
-public class Pangolin extends Personnage{
+package DnDGame.Personnage;
+
+import DnDGame.EquipementOffensif.Caillou;
+import DnDGame.EquipementDefensif.SlipSale;
+
+public class Pangolin extends Personnage {
 
     public Pangolin(String name){
         super(PANGOLIN, name);

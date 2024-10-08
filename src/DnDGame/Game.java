@@ -1,18 +1,22 @@
+package DnDGame;
+
+import DnDGame.Personnage.Guerrier;
+import DnDGame.Personnage.Magicien;
+import DnDGame.Personnage.Pangolin;
+import DnDGame.Personnage.Personnage;
+
 import java.util.Random;
 
 public class Game {
-    Personnage player1;
-    Menu menu;
 
-    public Game() {
-        menu = new Menu();
+    public Game(Menu menu) {
 
 
-        startGame();
+        startGame(menu);
 
     }
 
-    public Personnage characterCreation() {
+    public Personnage characterCreation(Menu menu) {
         menu.displayStarLine();
 
         int characterType = menu.askCharacterType();
@@ -35,31 +39,35 @@ public class Game {
         return character;
     }
 
-    public void startGame() {
-        Personnage player = characterCreation();
+    public void startGame(Menu menu) {
+        Personnage player = characterCreation(menu);
 
         menu.displayStarLine();
 
         int playerChoice = menu.displayMenu();
 
-        //TODO mettre en switch case
         while (playerChoice != 4) {
-
-            if (playerChoice == 1) {
-                menu.displayCharacterInfo(player);
-            } else if (playerChoice == 2) {
-                player = characterCreation();
-            } else if (playerChoice == 3) {
-                menu.displayBeginning();
-                playGame(player);
+            switch (playerChoice) {
+                case 1:
+                    menu.displayCharacterInfo(player);
+                    break;
+                case 2:
+                    player = characterCreation(menu);
+                    break;
+                case 3:
+                    menu.displayBeginning();
+                    playGame(player, menu);
+                    break;
             }
-
             playerChoice = menu.displayMenu();
         }
 
+
+
+
         menu.displayStarLine();
-        //TODO méthode menu
-        System.out.println("A bientôt !");
+
+        menu.displayGameOver(player.getName());
 
     }
 
@@ -70,7 +78,7 @@ public class Game {
         return diceRoll;
     }
 
-    public void playGame(Personnage player) {
+    public void playGame(Personnage player, Menu menu) {
         //position initiale en case 1
         int playerPosition = 1;
 
@@ -78,6 +86,13 @@ public class Game {
         //si position - de 64 , relance le dé
         while (playerPosition < 64) {
             menu.displayStarLine();
+
+            //demande au joueur de lancer le dé
+            int playerInput = menu.askBeforeNewDiceRoll(player.getName());
+
+            while (playerInput != 1) {
+                playerInput = menu.askBeforeNewDiceRoll(player.getName());
+            }
 
             //lance le dé
             int diceRoll = rollDice();

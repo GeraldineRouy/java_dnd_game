@@ -1,3 +1,5 @@
+package DnDGame.EquipementDefensif;
+
 public abstract class EquipementDefensif {
 
     protected String name;

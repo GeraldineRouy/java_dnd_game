@@ -1,3 +1,8 @@
+package DnDGame.Personnage;
+
+import DnDGame.EquipementDefensif.EquipementDefensif;
+import DnDGame.EquipementOffensif.EquipementOffensif;
+
 public abstract class Personnage {
     public static final String GUERRIER = "guerrier";
     public static final String MAGICIEN = "magicien";

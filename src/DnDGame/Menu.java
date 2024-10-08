@@ -1,3 +1,7 @@
+package DnDGame;
+
+import DnDGame.Personnage.Personnage;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -20,6 +24,11 @@ public class Menu {
                  2 : un magicien""");
 
         input = typeChoice.nextInt();
+
+
+
+
+
 
         if (input == 1) {
             System.out.println("Vous avez choisi d'incarner un guerrier !");
@@ -88,6 +97,17 @@ public class Menu {
                 "\n 1 : Refaire une partie" +
                 "\n 2 : Quitter le jeu");
         input = playerChoice.nextInt();
+
+        return input;
+    }
+
+    public int askBeforeNewDiceRoll (String playerName) {
+        Scanner choice = new Scanner(System.in);
+        int input;
+
+        System.out.println("A vous de jouer " + playerName + " !" +
+                "\nAppuyez sur 1 puis entrée pour relancer le dé.");
+        input = choice.nextInt();
 
         return input;
     }

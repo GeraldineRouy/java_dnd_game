@@ -1,7 +1,12 @@
-public class Guerrier extends Personnage{
+package DnDGame.Personnage;
+
+import DnDGame.EquipementOffensif.Arme;
+import DnDGame.EquipementDefensif.Bouclier;
+
+public class Guerrier extends Personnage {
 
     public Guerrier(String name){
-        super(GUERRIER, name);
+        super(Personnage.GUERRIER, name);
         setHP(10);
         setStrength(10);
         super.offensiveEquipment = new Arme();
@@ -11,7 +16,7 @@ public class Guerrier extends Personnage{
 
     @Override
     public String getType() {
-        return GUERRIER;
+        return Personnage.GUERRIER;
     }
 
 
