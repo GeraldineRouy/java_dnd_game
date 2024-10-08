@@ -6,12 +6,17 @@ import DnDGame.Personnage.Pangolin;
 import DnDGame.Personnage.Personnage;
 import DnDGame.Personnage.PersonnageHorsPlateauException;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Game {
 
     private int boardLength = 64;
+    private String [] board;
+    private int playerPosition;
+    private ArrayList<Case> boardCases;
 
     public Game(Menu menu) {
 
