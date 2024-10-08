@@ -4,16 +4,25 @@ import DnDGame.Personnage.Guerrier;
 import DnDGame.Personnage.Magicien;
 import DnDGame.Personnage.Pangolin;
 import DnDGame.Personnage.Personnage;
+import DnDGame.Personnage.PersonnageHorsPlateauException;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Game {
 
+    private int boardLength = 64;
+
     public Game(Menu menu) {
 
+        startGame(menu, boardLength);
 
-        startGame(menu);
+    }
 
+    public String[] initializeBoard( int boardLength) {
+        String[] board = new String[boardLength];
+        Arrays.fill(board, "[]");
+        return board;
     }
 
     public Personnage characterCreation(Menu menu) {
@@ -39,7 +48,7 @@ public class Game {
         return character;
     }
 
-    public void startGame(Menu menu) {
+    public void startGame(Menu menu, int boardLength) {
         Personnage player = characterCreation(menu);
 
         menu.displayStarLine();
@@ -56,7 +65,7 @@ public class Game {
                     break;
                 case 3:
                     menu.displayBeginning();
-                    playGame(player, menu);
+                    playGame(player, menu, boardLength);
                     break;
             }
             playerChoice = menu.displayMenu();
@@ -78,15 +87,28 @@ public class Game {
         return diceRoll;
     }
 
-    public void playGame(Personnage player, Menu menu) {
+    public void moveCharacterOnBoard(int oldPosition, int newPosition, String [] board, int boardLength) throws PersonnageHorsPlateauException {
+        //Je vérifie si la nouvelle position du joueur ne dépasse pas la longueur de board
+        if (newPosition >= boardLength) {
+            throw new PersonnageHorsPlateauException("Le personnage dépasse la dernière case !");
+        }
+
+        board[oldPosition] = "[]";
+        board[newPosition] = "[P]";
+    }
+
+    public void playGame(Personnage player, Menu menu, int boardLength) {
+        //Création du plateau de jeu
+        String [] board = initializeBoard(boardLength);
+
         //position initiale en case 1
-        int playerPosition = 1;
+        board[0] = "[P]";
 
-        //vérifie sa position
-        //si position - de 64 , relance le dé
-        while (playerPosition < 64) {
-            menu.displayStarLine();
+        int oldPosition = 0;
+        int newPosition = 0;
 
+        //boucle de jeu tant que joueur est pas arrivé à case 64
+        while (newPosition <= boardLength) {
             //demande au joueur de lancer le dé
             int playerInput = menu.askBeforeNewDiceRoll(player.getName());
 
@@ -94,18 +116,29 @@ public class Game {
                 playerInput = menu.askBeforeNewDiceRoll(player.getName());
             }
 
-            //lance le dé
-            int diceRoll = rollDice();
-            //affiche le dé
-            menu.displayDiceRoll(diceRoll);
+            try {
+                //lance le dé
+                int diceRoll = rollDice();
+                //affiche le dé
+                menu.displayDiceRoll(diceRoll);
 
-            //avance le joueur
-            playerPosition = playerPosition + diceRoll;
+                //avance le joueur sur le plateau
+                oldPosition = newPosition;
+                newPosition = newPosition + diceRoll;
+                moveCharacterOnBoard(oldPosition, newPosition, board, boardLength);
 
-            //indique la nouvelle position du joueur
-            menu.displayPlayerPosition(playerPosition);
+                //indique la nouvelle position du joueur
+                menu.displayPlayerPosition(newPosition+1);
+
+            } catch (PersonnageHorsPlateauException e) {
+                //si le joueur dépasse du plateau, afficher message
+                System.out.println(e.getMessage());
+                //et sort de la boucle
+                break;
+            }
 
         }
+
         menu.displayStarLine();
 
         // si position >= 64, gagné

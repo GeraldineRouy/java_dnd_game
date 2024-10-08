@@ -86,7 +86,7 @@ public class Menu {
 
     public void displayEnd (String playerName) {
         System.out.println("Félicitations " + playerName + " !" +
-                "\n \\o/ Vous êtes arrivé sur la case 64, vous avez terminé le jeu !!! \\o/");
+                "\n \\o/ Vous êtes arrivé au bout du plateau, vous avez terminé le jeu !!! \\o/");
     }
 
     public int displayEndChoice () {
