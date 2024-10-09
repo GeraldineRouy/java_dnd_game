@@ -1,7 +1,9 @@
 package DnDGame;
 
+import DnDGame.Board.Case;
 import DnDGame.Personnage.Personnage;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -13,6 +15,8 @@ public class Menu {
     public int askCharacterType() {
         Scanner typeChoice = new Scanner(System.in);
         int input;
+
+        displayStarLine();
 
         System.out.println("""
                 Bienvenue, aventurier !
@@ -54,6 +58,8 @@ public class Menu {
         Scanner choice = new Scanner(System.in);
         int input;
 
+        displayStarLine();
+
         System.out.println("Que souhaitez-vous faire? " +
                 "\n 1 : Afficher les infos de mon aventurier" +
                 "\n 2 : Modifier mon aventurier" +
@@ -84,7 +90,16 @@ public class Menu {
         System.out.println("Vous êtes en case " + playerPosition + ".");
     }
 
+    public void displayPlayerPositionOnIteration4Board (int playerPosition, ArrayList<Case> board) {
+        if (board.get(playerPosition) == null) {
+            System.out.println("Vous êtes en case " + (playerPosition+1) + " et il ne se passe rien.");
+        } else {
+            System.out.println("Vous êtes en case " + (playerPosition+1) + " : vous trouvez un/e " + board.get(playerPosition) + " !");
+        }
+    }
+
     public void displayEnd (String playerName) {
+        displayStarLine();
         System.out.println("Félicitations " + playerName + " !" +
                 "\n \\o/ Vous êtes arrivé au bout du plateau, vous avez terminé le jeu !!! \\o/");
     }
@@ -92,6 +107,8 @@ public class Menu {
     public int displayEndChoice () {
         Scanner playerChoice = new Scanner(System.in);
         int input;
+
+        displayStarLine();
 
         System.out.println("Que souhaitez-vous faire?" +
                 "\n 1 : Refaire une partie" +
@@ -113,11 +130,12 @@ public class Menu {
     }
 
     public void displayGameOver (String playerName) {
+        displayStarLine();
         System.out.println("A bientôt " + playerName + " !");
     }
 
-    public void displayStarLine() {
-        System.out.println("****************************************");
+    private void displayStarLine() {
+        System.out.println("*************************************************");
     }
 
 
