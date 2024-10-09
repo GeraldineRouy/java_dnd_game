@@ -1,13 +1,15 @@
 package DnDGame.Personnage;
 
-import DnDGame.EquipementOffensif.Sort;
+import DnDGame.EquipementOffensif.Sort.Sort;
 import DnDGame.EquipementDefensif.Philtre;
 
 public class Magicien extends Personnage {
+    public static final String MAGICIEN = "magicien";
 
 
     public Magicien(String name) {
-        super(Personnage.MAGICIEN, name);
+        super(name);
+        this.type = MAGICIEN;
         setHP(6);
         setStrength(15);
         this.offensiveEquipment = new Sort();
@@ -16,7 +18,7 @@ public class Magicien extends Personnage {
     }
 
     public String getType() {
-        return Personnage.MAGICIEN;
+        return MAGICIEN;
     }
 
 

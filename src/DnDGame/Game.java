@@ -1,9 +1,9 @@
 package DnDGame;
 
 import DnDGame.Board.Case;
-import DnDGame.Board.Ennemi;
+import DnDGame.Ennemi.Ennemi;
 import DnDGame.Board.Potion;
-import DnDGame.EquipementOffensif.Arme;
+import DnDGame.EquipementOffensif.Arme.Arme;
 import DnDGame.Personnage.Guerrier;
 import DnDGame.Personnage.Magicien;
 import DnDGame.Personnage.Pangolin;

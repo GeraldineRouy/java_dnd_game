@@ -1,6 +1,6 @@
 package DnDGame.Board;
 
-public class Potion implements Case{
+public class Potion implements CaisseSurprise{
 
     public static final String POTION = "potion";
 

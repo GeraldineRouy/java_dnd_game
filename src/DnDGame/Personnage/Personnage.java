@@ -4,11 +4,8 @@ import DnDGame.EquipementDefensif.EquipementDefensif;
 import DnDGame.EquipementOffensif.EquipementOffensif;
 
 public abstract class Personnage {
-    public static final String GUERRIER = "guerrier";
-    public static final String MAGICIEN = "magicien";
-    public static final String PANGOLIN = "pangolin";
-    protected String name;
 
+    protected String name;
     protected int typeNumber;
     protected String type;
     protected int healthPoints;
@@ -35,27 +32,6 @@ public abstract class Personnage {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTypeByNumberType() {
-        if (typeNumber == 1) {
-            type = GUERRIER;
-        } else if (typeNumber == 2) {
-            type = MAGICIEN;
-        } else {
-            type = PANGOLIN;
-        }
-        return type;
-    }
-
-    public void setType(int characterType) {
-        if (typeNumber == 1) {
-            type = GUERRIER;
-        } else if (typeNumber == 2) {
-            type = MAGICIEN;
-        } else {
-            type = PANGOLIN;
-        }
     }
 
     public int getHP() {
