@@ -1,6 +1,10 @@
 package dnd_game.equipement;
 
-public abstract class Equipement {
+import dnd_game.personnage.Guerrier;
+import dnd_game.personnage.Personnage;
+import dnd_game.plateau.CaisseSurprise;
+
+public abstract class Equipement implements CaisseSurprise {
 
     protected String name;
 
@@ -14,4 +18,5 @@ public abstract class Equipement {
     public String toString() {
         return name;
     }
+
 }

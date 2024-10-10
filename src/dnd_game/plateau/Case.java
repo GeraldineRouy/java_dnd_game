@@ -1,10 +1,12 @@
 package dnd_game.plateau;
 
+import dnd_game.personnage.Personnage;
+
 public interface Case {
 
 
 
-    public String toString();
+    boolean interaction (Personnage player);
 
 
 }

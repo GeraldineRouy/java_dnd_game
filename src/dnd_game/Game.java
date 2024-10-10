@@ -18,9 +18,7 @@ import java.util.Random;
 public class Game {
 
     private int boardLength = 64;
-    private String [] board;
-    private int playerPosition;
-    private ArrayList<Case> boardCases;
+    private Board board;
 
     public Game() {
 
@@ -87,7 +85,7 @@ public class Game {
 
     }
 
-    public void startIteration4Game(Menu menu, Personnage player, ArrayList<Case> board) {
+    public void startIteration4Game(Menu menu, Personnage player, Board board) {
 
         int playerChoice = menu.displayMenu();
 
@@ -111,7 +109,7 @@ public class Game {
 
     }
 
-    private void playIteration4Game(Personnage player, Menu menu, ArrayList<Case> board) {
+    private void playIteration4Game(Personnage player, Menu menu, Board board) {
 
         //position du joueur initiale en case 1
 
@@ -135,7 +133,7 @@ public class Game {
                 menu.displayDiceRoll(diceRoll);
 
                 //avance le joueur sur le plateau
-                playerPosition = moveCharacterOnIteration4Board(playerPosition, diceRoll, board, menu);
+                playerPosition = moveCharacterOnIteration4Board(player, playerPosition, diceRoll, board, menu);
 
             } catch (PersonnageHorsPlateauException e) {
                 //si le joueur dépasse du plateau, afficher message
@@ -158,16 +156,18 @@ public class Game {
 
     }
 
-    public int moveCharacterOnIteration4Board(int playerPosition, int diceRoll, ArrayList<Case> board, Menu menu) throws PersonnageHorsPlateauException {
+    public int moveCharacterOnIteration4Board(Personnage player, int playerPosition, int diceRoll, Board board, Menu menu) throws PersonnageHorsPlateauException {
 
         playerPosition = playerPosition + diceRoll;
 
         //vérifier si position ne dépasse pas la longueur du board
-        if (playerPosition >= board.size()) {
+        if (playerPosition >= boardList.size()) {
             throw new PersonnageHorsPlateauException();
         } else {
             //indique la nouvelle position du joueur
             menu.displayPlayerPositionOnIteration4Board(playerPosition, board);
+            //récupère objet éventuellement
+            board.takeItem(playerPosition, board, player, menu);
         }
 
         return playerPosition;

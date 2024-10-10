@@ -1,5 +1,6 @@
 package dnd_game.ennemi;
 
+import dnd_game.personnage.Personnage;
 import dnd_game.plateau.Case;
 
 public class Ennemi implements Case {
@@ -16,5 +17,14 @@ public class Ennemi implements Case {
         String message = "Il y a un " + ENNEMI + ", c'est le " + name + " !" +
                 "Il a "+ healthPoints + " points de vie et son attaque est de " + strengthPoints + ".";
         return message;
+    }
+
+    public void interaction() {
+
+    }
+
+    @Override
+    public boolean interaction(Personnage player) {
+        return false;
     }
 }

@@ -140,5 +140,10 @@ public class Menu {
         System.out.println("*************************************************");
     }
 
+    public void displayInteraction(String playerName, String item) {
+        displayStarLine();
+        System.out.println(playerName + " récupère l'objet " + item + " !");
+    }
+
 
 }
