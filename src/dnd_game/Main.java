@@ -1,6 +1,6 @@
 package dnd_game;
 
-import dnd_game.plateau.Board;
+import dnd_game.plateau.Plateau;
 import dnd_game.plateau.Case;
 import dnd_game.personnage.Personnage;
 
@@ -11,11 +11,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Game game = new Game();
-        Menu menu = new Menu();
-        Board board = new Board();
-        ArrayList<Case> fourCasesBoard = board.initialise4CasesBoard();
-        Personnage player = game.characterCreation(menu);
-        game.startIteration4Game(menu, player, fourCasesBoard);
+        game.startIteration4Game();
 
     }
 }

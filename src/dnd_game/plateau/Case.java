@@ -6,7 +6,7 @@ public interface Case {
 
 
 
-    boolean interaction (Personnage player);
+    void interaction (Personnage player);
 
 
 }

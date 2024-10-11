@@ -2,7 +2,7 @@ package dnd_game.plateau;
 
 import dnd_game.personnage.Personnage;
 
-public class Potion implements CaisseSurprise{
+public class Potion implements Case {
 
     public static final String POTION = "potion";
 
@@ -15,7 +15,7 @@ public class Potion implements CaisseSurprise{
     }
 
     @Override
-    public boolean interaction(Personnage player) {
-        return true;
+    public void interaction(Personnage player) {
+        System.out.println("Super !!!" + player.getName() + " boit une " + toString());
     }
 }

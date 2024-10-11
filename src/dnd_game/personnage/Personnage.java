@@ -49,12 +49,11 @@ public abstract class Personnage {
         this.strengthPoints = strength;
     }
 
+    public String getType() {
+        return this.type;
+    }
+
     public String toString() {
-//        String message = "Votre avatar s'appelle "+ name + "." +
-//                "\n C'est un " + type + "." +
-//                "\n Il attaque avec un/e " + offensiveEquipment.toString() + " et se défend avec un/e " + defensiveEquipment + ".";
-//
-//        return message;
         return "Nom : "+ name +
                 "\nType : " + type +
                 "\nVie : " + healthPoints +

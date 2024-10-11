@@ -11,7 +11,7 @@ public class Bouclier extends EquipementDefensif {
     }
 
     @Override
-    public boolean interaction(Personnage player) {
-        return player instanceof Guerrier;
+    public void interaction(Personnage player) {
+
     }
 }

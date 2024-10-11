@@ -17,7 +17,7 @@ public abstract class EquipementOffensif extends Equipement {
     }
 
     public String toString() {
-        return "une " + type + ", attaque +" + strengthBonus + " !";
+        return "une " + type + ", attaque +" + strengthBonus;
     }
 
 }

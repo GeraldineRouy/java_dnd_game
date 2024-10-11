@@ -12,7 +12,7 @@ public class Philtre extends EquipementDefensif {
     }
 
     @Override
-    public boolean interaction(Personnage player) {
-        return player instanceof Magicien;
+    public void interaction(Personnage player) {
+
     }
 }

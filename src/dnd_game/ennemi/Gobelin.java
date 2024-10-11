@@ -9,4 +9,5 @@ public class Gobelin extends Ennemi{
         healthPoints = 6;
         strengthPoints = 1;
     }
+
 }

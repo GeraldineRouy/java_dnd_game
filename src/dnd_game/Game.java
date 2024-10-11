@@ -1,44 +1,30 @@
 package dnd_game;
 
-import dnd_game.plateau.Case;
-import dnd_game.ennemi.Ennemi;
-import dnd_game.plateau.Potion;
-import dnd_game.equipement.offensif.Arme.Arme;
 import dnd_game.personnage.Guerrier;
 import dnd_game.personnage.Magicien;
 import dnd_game.personnage.Pangolin;
 import dnd_game.personnage.Personnage;
+import dnd_game.plateau.Case;
 import dnd_game.plateau.PersonnageHorsPlateauException;
-import dnd_game.plateau.Board;
+import dnd_game.plateau.Plateau;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Game {
 
-    private int boardLength = 64;
-    private Board board;
+    private Plateau board;
+    private Menu menu;
+    private Personnage player;
+    private ArrayList<Case> boardList;
 
     public Game() {
-
+        this.board = new Plateau();
+        this.menu = new Menu();
+        this.player = this.characterCreation();
     }
 
-    public Game(Menu menu) {
-
-        startGame(menu, boardLength);
-
-    }
-
-    public String[] initializeBoard( int boardLength) {
-        String[] board = new String[boardLength];
-        Arrays.fill(board, "[]");
-        return board;
-    }
-
-
-
-    public Personnage characterCreation(Menu menu) {
+    public Personnage characterCreation() {
 
         int characterType = menu.askCharacterType();
 
@@ -60,34 +46,11 @@ public class Game {
         return character;
     }
 
-    public void startGame(Menu menu, int boardLength) {
-        Personnage player = characterCreation(menu);
 
-        int playerChoice = menu.displayMenu();
+    public void startIteration4Game() {
+        menu = new Menu();
 
-        while (playerChoice != 4) {
-            switch (playerChoice) {
-                case 1:
-                    menu.displayCharacterInfo(player);
-                    break;
-                case 2:
-                    player = characterCreation(menu);
-                    break;
-                case 3:
-                    menu.displayBeginning();
-                    playGame(player, menu, boardLength);
-                    break;
-            }
-            playerChoice = menu.displayMenu();
-        }
-
-        menu.displayGameOver(player.getName());
-
-    }
-
-    public void startIteration4Game(Menu menu, Personnage player, Board board) {
-
-        int playerChoice = menu.displayMenu();
+        int playerChoice = menu.displayStartMenu();
 
         while (playerChoice != 4) {
             switch (playerChoice) {
@@ -95,27 +58,25 @@ public class Game {
                     menu.displayCharacterInfo(player);
                     break;
                 case 2:
-                    player = characterCreation(menu);
+                    player = characterCreation();
                     break;
                 case 3:
                     menu.displayBeginning();
-                    playIteration4Game(player, menu, board);
+                    playIteration4Game();
                     break;
             }
-            playerChoice = menu.displayMenu();
+            playerChoice = menu.displayStartMenu();
         }
 
         menu.displayGameOver(player.getName());
 
     }
 
-    private void playIteration4Game(Personnage player, Menu menu, Board board) {
+    private void playIteration4Game() {
 
         //position du joueur initiale en case 1
-
-
         int playerPosition = 0;
-        menu.displayPlayerPositionOnIteration4Board(playerPosition, board);
+        menu.displayPlayerPositionOnIteration4Board(playerPosition, board.getCase(playerPosition));
 
         //boucle de jeu tant que joueur est pas arrivé à case 4
         while (playerPosition < board.size()) {
@@ -128,12 +89,12 @@ public class Game {
 
             try {
                 //lance le dé
-                int diceRoll = 1;
+                int diceRoll = rollDice();
                 //affiche le dé
                 menu.displayDiceRoll(diceRoll);
 
                 //avance le joueur sur le plateau
-                playerPosition = moveCharacterOnIteration4Board(player, playerPosition, diceRoll, board, menu);
+                playerPosition = moveCharacterOnIteration4Board(playerPosition, diceRoll);
 
             } catch (PersonnageHorsPlateauException e) {
                 //si le joueur dépasse du plateau, afficher message
@@ -156,18 +117,19 @@ public class Game {
 
     }
 
-    public int moveCharacterOnIteration4Board(Personnage player, int playerPosition, int diceRoll, Board board, Menu menu) throws PersonnageHorsPlateauException {
+    public int moveCharacterOnIteration4Board(int playerPosition, int diceRoll) throws PersonnageHorsPlateauException {
 
         playerPosition = playerPosition + diceRoll;
 
         //vérifier si position ne dépasse pas la longueur du board
-        if (playerPosition >= boardList.size()) {
+        if (playerPosition > board.size()) {
             throw new PersonnageHorsPlateauException();
         } else {
+            Case currentCase = board.getCase(playerPosition);
             //indique la nouvelle position du joueur
-            menu.displayPlayerPositionOnIteration4Board(playerPosition, board);
+            menu.displayPlayerPositionOnIteration4Board(playerPosition, currentCase);
             //récupère objet éventuellement
-            board.takeItem(playerPosition, board, player, menu);
+            currentCase.interaction(player);
         }
 
         return playerPosition;
@@ -181,69 +143,6 @@ public class Game {
         return diceRoll;
     }
 
-    public void moveCharacterOnBoard(int oldPosition, int newPosition, String [] board, int boardLength) throws PersonnageHorsPlateauException {
-        //Je vérifie si la nouvelle position du joueur ne dépasse pas la longueur de board
-        if (newPosition >= boardLength) {
-            throw new PersonnageHorsPlateauException();
-        }
-
-        board[oldPosition] = "[]";
-        board[newPosition] = "[P]";
-    }
-
-    public void playGame(Personnage player, Menu menu, int boardLength) {
-        //Création du plateau de jeu
-        String [] board = initializeBoard(boardLength);
-
-        //position initiale en case 1
-        board[0] = "[P]";
-
-        int oldPosition = 0;
-        int newPosition = 0;
-
-        //boucle de jeu tant que joueur est pas arrivé à case 64
-        while (newPosition <= boardLength) {
-            //demande au joueur de lancer le dé
-            int playerInput = menu.askBeforeNewDiceRoll(player.getName());
-
-            while (playerInput != 1) {
-                playerInput = menu.askBeforeNewDiceRoll(player.getName());
-            }
-
-            try {
-                //lance le dé
-                int diceRoll = rollDice();
-                //affiche le dé
-                menu.displayDiceRoll(diceRoll);
-
-                //avance le joueur sur le plateau
-                oldPosition = newPosition;
-                newPosition = newPosition + diceRoll;
-                moveCharacterOnBoard(oldPosition, newPosition, board, boardLength);
-
-                //indique la nouvelle position du joueur
-                menu.displayPlayerPosition(newPosition+1);
-
-            } catch (PersonnageHorsPlateauException e) {
-                //si le joueur dépasse du plateau, afficher message
-                System.out.println(e.getMessage());
-                //et sort de la boucle
-                break;
-            }
-
-        }
-        // si position >= 64, gagné
-        menu.displayEnd(player.getName());
-
-        //choix entre recommencer ou quitter
-        int playerChoice = menu.displayEndChoice();
-
-        if (playerChoice == 2) {
-            menu.displayGameOver(player.getName());
-            System.exit(0);
-        }
-
-    }
 
 
 }

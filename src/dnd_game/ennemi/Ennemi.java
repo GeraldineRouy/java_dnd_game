@@ -3,7 +3,7 @@ package dnd_game.ennemi;
 import dnd_game.personnage.Personnage;
 import dnd_game.plateau.Case;
 
-public class Ennemi implements Case {
+public abstract class Ennemi implements Case {
 
     public static final String ENNEMI = "ennemi";
     protected String name;
@@ -15,7 +15,7 @@ public class Ennemi implements Case {
 
     public String toString() {
         String message = "Il y a un " + ENNEMI + ", c'est le " + name + " !" +
-                "Il a "+ healthPoints + " points de vie et son attaque est de " + strengthPoints + ".";
+                "Il a "+ healthPoints + " points de vie et son attaque est de " + strengthPoints;
         return message;
     }
 
@@ -24,7 +24,7 @@ public class Ennemi implements Case {
     }
 
     @Override
-    public boolean interaction(Personnage player) {
-        return false;
+    public void interaction(Personnage player) {
+
     }
 }

@@ -4,6 +4,7 @@ import dnd_game.plateau.Case;
 import dnd_game.personnage.Personnage;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -54,7 +55,7 @@ public class Menu {
         return characterName;
     }
 
-    public int displayMenu() {
+    public int displayStartMenu() {
         Scanner choice = new Scanner(System.in);
         int input;
 
@@ -65,14 +66,20 @@ public class Menu {
                 "\n 2 : Modifier mon aventurier" +
                 "\n 3 : Commencer l'aventure !" +
                 "\n 4 : Quitter le jeu");
-        input = choice.nextInt();
+        try {
+            input = choice.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Saisie non valide.");
+            input = this.displayStartMenu();
+        }
+
 
         return input;
     }
 
     public void displayCharacterInfo(Personnage player) {
         this.displayStarLine();
-        System.out.println(player.toString());
+        System.out.println("Voici les informations concernant votre personnage :\n" + player.toString());
         this.displayStarLine();
     }
 
@@ -88,14 +95,10 @@ public class Menu {
                 "\nVous avancez donc de " + result + " case(s).");
     }
 
-    public void displayPlayerPosition (int playerPosition) {
-        displayStarLine();
-        System.out.println("Vous êtes en case " + playerPosition + ".");
-    }
 
-    public void displayPlayerPositionOnIteration4Board (int playerPosition, ArrayList<Case> board) {
+    public void displayPlayerPositionOnIteration4Board (int playerPosition, Case caseName) {
         displayStarLine();
-        System.out.println("Vous êtes en case " + (playerPosition+1) + " : " + board.get(playerPosition) + " !");
+        System.out.println("Vous êtes en case " + (playerPosition+1) + " : " + caseName.toString() + " !");
     }
 
     public void displayEnd (String playerName) {
@@ -146,4 +149,7 @@ public class Menu {
     }
 
 
+    public void displayPlayerCantTakeItem(String playerName, String playerType, String item) {
+        System.out.println("Malheureusement " + playerName + " est un " + playerType + " et ne peut pas s'équiper de " + item + ".");
+    }
 }
