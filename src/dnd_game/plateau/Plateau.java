@@ -1,5 +1,7 @@
 package dnd_game.plateau;
 
+import dnd_game.Menu;
+import dnd_game.personnage.Personnage;
 import dnd_game.personnage.ennemi.Dragon;
 import dnd_game.personnage.ennemi.Gobelin;
 import dnd_game.personnage.ennemi.Sorcier;
@@ -92,7 +94,6 @@ public class Plateau {
 
     }
 
-
     public Case getCase(int index) {
         if (index >= 0 && index < boardList.size()) {
             return boardList.get(index);
@@ -100,6 +101,8 @@ public class Plateau {
             throw new PersonnageHorsPlateauException();
         }
     }
+
+
 
     public int size() {
         return boardList.size();

@@ -1,12 +1,18 @@
 package dnd_game;
 
+import dnd_game.equipement.Equipement;
+import dnd_game.equipement.offensif.EquipementOffensif;
+import dnd_game.equipement.offensif.armes.Arme;
+import dnd_game.equipement.offensif.sorts.Sort;
 import dnd_game.personnage.Guerrier;
 import dnd_game.personnage.Magicien;
 import dnd_game.personnage.Pangolin;
 import dnd_game.personnage.Personnage;
+import dnd_game.personnage.ennemi.Ennemi;
 import dnd_game.plateau.Case;
 import dnd_game.plateau.PersonnageHorsPlateauException;
 import dnd_game.plateau.Plateau;
+import dnd_game.plateau.Potion;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -121,12 +127,11 @@ public class Game {
     }
 
     public void verifyIfPlayerSurvives() {
-        if (player.verifyIfIsDead()) {
-            System.out.println("Oh non ! " + player.getName() + " n'a pas survécu à l'attaque :-(" +
-                    "\n----- Fin de la partie ------" );
+        if (player.isDead()) {
+            menu.displayPlayerDeath(player.getName());
             restartGameOrQuit();
         } else {
-            System.out.println("Il reste " + player.getHP() + " points de vie à " + player.getName() + ".");
+            menu.displayPlayerHP(player.getHP(), player.getName());
         }
     }
 
@@ -139,14 +144,60 @@ public class Game {
             throw new PersonnageHorsPlateauException();
         } else {
             Case currentCase = board.getCase(playerPosition);
-            //indique la nouvelle position du joueur
+
             menu.displayPlayerPositionOnIteration4Board(playerPosition, currentCase);
-            //récupère objet éventuellement
+
             currentCase.interaction(player);
-            verifyIfPlayerSurvives();
+            if (currentCase instanceof Ennemi) {
+                menu.displayEnemyAttack(((Ennemi) currentCase).getName(), player.getName(), ((Ennemi) currentCase).getStrength(), player.getDefensiveEquipmentName(), player.getDefenseBonus());
+                playerFight((Ennemi) currentCase);
+                verifyIfPlayerSurvives();
+            } else if (currentCase instanceof EquipementOffensif) {
+                playerGetsOffensiveEquipment((EquipementOffensif) currentCase);
+            } else if(currentCase instanceof Potion){
+                menu.displayPotionInteraction(player.getName(), ((Potion) currentCase).getHealthBonus());
+            } else {
+                menu.displayNothingHappens();
+            }
+
+
         }
 
         return playerPosition;
+    }
+
+    public void playerFight(Ennemi enemy) {
+        player.attackEnemy(enemy);
+
+        if (enemy.isDead()) {
+            menu.displayVictory(player.getName());
+        }
+    }
+
+
+    public void playerGetsOffensiveEquipment(EquipementOffensif offensiveEquipment) {
+        if (offensiveEquipment instanceof Arme) {
+            warriorGetsWeapon((Arme) offensiveEquipment);
+        }
+        if (offensiveEquipment instanceof Sort) {
+            wizardGetsSpell((Sort) offensiveEquipment);
+        }
+    }
+
+    public void warriorGetsWeapon(Arme weapon) {
+        if (player instanceof Guerrier) {
+            menu.displayOffensiveEquipmentInteraction(player.getName(), weapon.toString(), weapon.getStrengthBonus(), player.getTotalStrength());
+        } else {
+            menu.displayNonValidEquipment(player.getName(), player.getType(), weapon.toString());
+        }
+    }
+
+    public void wizardGetsSpell(Sort spell) {
+        if (player instanceof Magicien) {
+            menu.displayOffensiveEquipmentInteraction(player.getName(), spell.toString(), spell.getStrengthBonus(), player.getTotalStrength());
+        } else {
+            menu.displayNonValidEquipment(player.getName(), player.getType(), spell.toString());
+        }
     }
 
 

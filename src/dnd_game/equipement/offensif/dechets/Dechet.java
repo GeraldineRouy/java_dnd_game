@@ -21,12 +21,6 @@ public class Dechet extends EquipementOffensif implements Case {
 
     @Override
     public void interaction(Personnage player) {
-        if (player instanceof Pangolin) {
-            increaseStrength(player);
-            System.out.println(player.getName() + " s'équipe avec " + name
-                    + "\nSa force augmente de " + strengthBonus + " points !");
-        } else {
-            System.out.println(player.getName() + " est un " + player.getType() + ", il ne peut pas s'équiper de " + toString());
-        }
+
     }
 }

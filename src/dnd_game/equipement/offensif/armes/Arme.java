@@ -18,14 +18,12 @@ public class Arme extends EquipementOffensif implements Case {
         return ARME;
     }
 
+
+
     @Override
     public void interaction(Personnage player) {
         if (player instanceof Guerrier) {
-            increaseStrength(player);
-            System.out.println(player.getName() + " s'équipe avec " + name
-            + "\nSa force augmente de " + strengthBonus + " points et son niveau de force total est de " + player.getStrength() + ".");
-        } else {
-            System.out.println(player.getName() + " est un " + player.getType() + ", il ne peut pas s'équiper de " + toString());
+            player.setTotalStrength(strengthBonus);
         }
     }
 }

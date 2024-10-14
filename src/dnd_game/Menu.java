@@ -13,6 +13,10 @@ public class Menu {
 
     }
 
+    private void displayStarLine() {
+        System.out.println("*************************************************");
+    }
+
     public int askCharacterType() {
         Scanner typeChoice = new Scanner(System.in);
         int input;
@@ -139,9 +143,6 @@ public class Menu {
         System.out.println("A bientôt " + playerName + " !");
     }
 
-    private void displayStarLine() {
-        System.out.println("*************************************************");
-    }
 
     public void displayInteraction(String playerName, String item) {
         displayStarLine();
@@ -151,5 +152,47 @@ public class Menu {
 
     public void displayPlayerCantTakeItem(String playerName, String playerType, String item) {
         System.out.println("Malheureusement " + playerName + " est un " + playerType + " et ne peut pas s'équiper de " + item + ".");
+    }
+
+    public void displayPlayerDeath(String playerName) {
+        displayStarLine();
+        System.out.println("Oh non ! " + playerName + " n'a pas survécu à l'attaque :-(" +
+                "\n----- Fin de la partie ------" );
+    }
+
+    public void displayPlayerAttack(String playerName, String enemyName, int playerStrength) {
+        System.out.println(playerName + " contre-attaque !  \n" +
+                enemyName + " subit " + playerStrength + " points de dégat.");
+    }
+
+    public void displayPlayerHP(int playerHP, String playerName) {
+        displayStarLine();
+        System.out.println("Il reste " + playerHP + " points de vie à " + playerName + ".");
+    }
+
+    public void displayEnemyAttack (String enemyName, String playerName, int damage, String defensiveEquipmentName, int defenseBonus) {
+        System.out.println("Attention ! le " + enemyName + " porte un coup à " + playerName + " !" +
+                "\nCe dernier subit " + damage + " points de dégats, mais son " + defensiveEquipmentName + " en absorbe " + defenseBonus + ".");
+    }
+
+    public void displayVictory (String enemyName) {
+        System.out.println("Victoire ! Le " + enemyName + " est vaincu !" );
+    }
+
+    public void displayOffensiveEquipmentInteraction (String playerName, String offensiveEquipmentName, int strengthBonus, int totalStrength) {
+        System.out.println(playerName + " s'équipe avec " + offensiveEquipmentName
+                + "\nSa force augmente de " + strengthBonus + " points et son niveau de force total est de " + totalStrength + ".");
+    }
+
+    public void displayNonValidEquipment (String playerName, String playerType, String EquipmentName) {
+        System.out.println(playerName + " est un " + playerType + ", il ne peut pas s'équiper de " + EquipmentName + ".");
+    }
+
+    public void displayNothingHappens() {
+        System.out.println("Une légère brise et des bruits lointains vous tiennent en alerte, mais rien ne se passe.");
+    }
+
+    public void displayPotionInteraction(String playerName, int healthBonus) {
+        System.out.println("Super !!!" + playerName + " boit une potion qui lui donne " + healthBonus + "points de vie !");
     }
 }

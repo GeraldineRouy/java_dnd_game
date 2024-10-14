@@ -22,9 +22,12 @@ public class Potion implements Case {
         player.setHP(player.getHP() + healthBonus);
     }
 
+    public int getHealthBonus() {
+        return healthBonus;
+    }
+
     @Override
     public void interaction(Personnage player) {
         increasePlayerHealth(player);
-        System.out.println("Super !!!" + player.getName() + " boit une " + name + " qui lui donne " + healthBonus + "points de vie !");
     }
 }

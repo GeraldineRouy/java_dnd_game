@@ -1,5 +1,6 @@
 package dnd_game.personnage;
 
+import dnd_game.Menu;
 import dnd_game.equipement.defensif.EquipementDefensif;
 import dnd_game.equipement.offensif.EquipementOffensif;
 import dnd_game.personnage.ennemi.Ennemi;
@@ -8,21 +9,20 @@ public abstract class Personnage {
 
     protected String name;
     protected String type;
-    protected boolean isAlive;
     protected int healthPoints;
-    protected double defenseRatio;
     protected int strengthPoints;
+    protected int totalStrength;
     protected EquipementOffensif offensiveEquipment;
     protected EquipementDefensif defensiveEquipment;
 
-    public Personnage(){
+    protected Personnage(){
     }
 
-    public Personnage(String name){
+    protected Personnage(String name){
         this.name = name;
     }
 
-    public Personnage(String type, String name){
+    protected Personnage(String type, String name){
         this.name = name;
         this.type = type;
     }
@@ -56,18 +56,8 @@ public abstract class Personnage {
         return this.type;
     }
 
-    public boolean verifyIfIsDead(){
+    public boolean isDead(){
         return this.healthPoints < 1;
-    }
-
-    public void takeOffensiveEquipment () {
-        offensiveEquipment.increaseStrength(this);
-    }
-
-    public void takeDamage(int enemyDamage) {
-        double damageReduction = (double) defensiveEquipment.getDefenseBonus() /10;
-        double damage = enemyDamage*damageReduction;
-        healthPoints -= (int) damage;
     }
 
     public void attackEnemy (Ennemi enemy) {
@@ -80,5 +70,21 @@ public abstract class Personnage {
                 "\nVie : " + healthPoints +
                 "\nForce : " +strengthPoints +
                 "\nDefense : " + defensiveEquipment.getDefenseBonus();
+    }
+
+    public String getDefensiveEquipmentName() {
+        return defensiveEquipment.getName();
+    }
+
+    public int getDefenseBonus() {
+        return defensiveEquipment.getDefenseBonus();
+    }
+
+    public void setTotalStrength(int strengthBonus) {
+        totalStrength = strengthPoints + strengthBonus;
+    }
+
+    public int getTotalStrength() {
+        return totalStrength;
     }
 }
