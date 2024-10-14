@@ -1,16 +1,12 @@
 package dnd_game.plateau;
 
-import dnd_game.Menu;
-import dnd_game.ennemi.Dragon;
-import dnd_game.ennemi.Ennemi;
-import dnd_game.ennemi.Gobelin;
-import dnd_game.ennemi.Sorcier;
-import dnd_game.equipement.offensif.Arme.Arme;
-import dnd_game.equipement.offensif.Arme.Epee;
-import dnd_game.equipement.offensif.Arme.Massue;
-import dnd_game.equipement.offensif.Sort.BouleDeFeu;
-import dnd_game.equipement.offensif.Sort.Eclair;
-import dnd_game.personnage.Personnage;
+import dnd_game.personnage.ennemi.Dragon;
+import dnd_game.personnage.ennemi.Gobelin;
+import dnd_game.personnage.ennemi.Sorcier;
+import dnd_game.equipement.offensif.armes.Epee;
+import dnd_game.equipement.offensif.armes.Massue;
+import dnd_game.equipement.offensif.sorts.BouleDeFeu;
+import dnd_game.equipement.offensif.sorts.Eclair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,4 +104,5 @@ public class Plateau {
     public int size() {
         return boardList.size();
     }
+
 }

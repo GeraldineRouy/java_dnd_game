@@ -9,10 +9,10 @@ public class Philtre extends EquipementDefensif {
 
     public Philtre(){
         name = PHILTRE;
+        defenseBonus = 3;
     }
 
     @Override
     public void interaction(Personnage player) {
-
     }
 }

@@ -1,4 +1,4 @@
-package dnd_game.equipement.offensif.Arme;
+package dnd_game.equipement.offensif.armes;
 
 public class Massue extends Arme{
 

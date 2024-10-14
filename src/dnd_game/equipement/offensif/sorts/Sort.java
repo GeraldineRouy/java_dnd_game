@@ -1,4 +1,4 @@
-package dnd_game.equipement.offensif.Sort;
+package dnd_game.equipement.offensif.sorts;
 
 import dnd_game.personnage.Magicien;
 import dnd_game.personnage.Personnage;
@@ -21,7 +21,9 @@ public class Sort extends EquipementOffensif implements Case {
     @Override
     public void interaction(Personnage player) {
         if (player instanceof Magicien) {
-            System.out.println(player.getName() + " s'équipe avec " + toString());
+            increaseStrength(player);
+            System.out.println(player.getName() + " s'équipe avec " + name
+                    + "\nSa force augmente de " + strengthBonus + " points !");
         } else {
             System.out.println(player.getName() + " est un " + player.getType() + ", il ne peut pas s'équiper de " + toString());
         }

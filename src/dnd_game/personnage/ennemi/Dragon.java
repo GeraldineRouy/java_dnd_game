@@ -1,4 +1,4 @@
-package dnd_game.ennemi;
+package dnd_game.personnage.ennemi;
 
 public class Dragon extends Ennemi{
 

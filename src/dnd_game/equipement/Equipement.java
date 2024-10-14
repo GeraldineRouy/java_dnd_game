@@ -18,4 +18,5 @@ public abstract class Equipement implements Case {
         return name;
     }
 
+
 }

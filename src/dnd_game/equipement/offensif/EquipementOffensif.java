@@ -1,6 +1,7 @@
 package dnd_game.equipement.offensif;
 
 import dnd_game.equipement.Equipement;
+import dnd_game.personnage.Personnage;
 
 public abstract class EquipementOffensif extends Equipement {
 
@@ -18,6 +19,10 @@ public abstract class EquipementOffensif extends Equipement {
 
     public String toString() {
         return "une " + type + ", attaque +" + strengthBonus;
+    }
+
+    public void increaseStrength(Personnage player) {
+        player.setStrength(player.getStrength() + strengthBonus);
     }
 
 }

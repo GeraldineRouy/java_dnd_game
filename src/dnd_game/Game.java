@@ -108,13 +108,26 @@ public class Game {
         menu.displayEnd(player.getName());
 
         //choix entre recommencer ou quitter
+        restartGameOrQuit();
+    }
+
+    public void restartGameOrQuit() {
         int playerChoice = menu.displayEndChoice();
 
         if (playerChoice == 2) {
             menu.displayGameOver(player.getName());
             System.exit(0);
         }
+    }
 
+    public void verifyIfPlayerSurvives() {
+        if (player.verifyIfIsDead()) {
+            System.out.println("Oh non ! " + player.getName() + " n'a pas survécu à l'attaque :-(" +
+                    "\n----- Fin de la partie ------" );
+            restartGameOrQuit();
+        } else {
+            System.out.println("Il reste " + player.getHP() + " points de vie à " + player.getName() + ".");
+        }
     }
 
     public int moveCharacterOnIteration4Board(int playerPosition, int diceRoll) throws PersonnageHorsPlateauException {
@@ -130,6 +143,7 @@ public class Game {
             menu.displayPlayerPositionOnIteration4Board(playerPosition, currentCase);
             //récupère objet éventuellement
             currentCase.interaction(player);
+            verifyIfPlayerSurvives();
         }
 
         return playerPosition;

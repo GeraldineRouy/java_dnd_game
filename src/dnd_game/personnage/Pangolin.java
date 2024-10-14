@@ -1,6 +1,6 @@
 package dnd_game.personnage;
 
-import dnd_game.equipement.offensif.Caillou;
+import dnd_game.equipement.offensif.dechets.Caillou;
 import dnd_game.equipement.defensif.SlipSale;
 
 public class Pangolin extends Personnage {

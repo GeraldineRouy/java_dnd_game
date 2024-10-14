@@ -1,4 +1,4 @@
-package dnd_game.equipement.offensif.Sort;
+package dnd_game.equipement.offensif.sorts;
 
 public class BouleDeFeu extends Sort{
 

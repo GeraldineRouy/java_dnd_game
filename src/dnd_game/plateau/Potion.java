@@ -6,16 +6,25 @@ public class Potion implements Case {
 
     public static final String POTION = "potion";
 
+    protected String name;
+    protected int healthBonus;
+
     public Potion() {
-        String name = POTION;
+        name = POTION;
+        healthBonus = 2;
     }
 
     public String toString() {
         return POTION;
     }
 
+    public void increasePlayerHealth(Personnage player) {
+        player.setHP(player.getHP() + healthBonus);
+    }
+
     @Override
     public void interaction(Personnage player) {
-        System.out.println("Super !!!" + player.getName() + " boit une " + toString());
+        increasePlayerHealth(player);
+        System.out.println("Super !!!" + player.getName() + " boit une " + name + " qui lui donne " + healthBonus + "points de vie !");
     }
 }

@@ -1,4 +1,4 @@
-package dnd_game.equipement.offensif.Arme;
+package dnd_game.equipement.offensif.armes;
 
 import dnd_game.personnage.Guerrier;
 import dnd_game.personnage.Personnage;
@@ -21,7 +21,9 @@ public class Arme extends EquipementOffensif implements Case {
     @Override
     public void interaction(Personnage player) {
         if (player instanceof Guerrier) {
-            System.out.println(player.getName() + " s'équipe avec " + toString() );
+            increaseStrength(player);
+            System.out.println(player.getName() + " s'équipe avec " + name
+            + "\nSa force augmente de " + strengthBonus + " points et son niveau de force total est de " + player.getStrength() + ".");
         } else {
             System.out.println(player.getName() + " est un " + player.getType() + ", il ne peut pas s'équiper de " + toString());
         }

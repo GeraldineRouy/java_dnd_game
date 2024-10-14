@@ -1,6 +1,6 @@
 package dnd_game.personnage;
 
-import dnd_game.equipement.offensif.Sort.Sort;
+import dnd_game.equipement.offensif.sorts.Sort;
 import dnd_game.equipement.defensif.Philtre;
 
 public class Magicien extends Personnage {
@@ -9,11 +9,11 @@ public class Magicien extends Personnage {
 
     public Magicien(String name) {
         super(name);
-        this.type = MAGICIEN;
-        setHP(6);
-        setStrength(15);
-        this.offensiveEquipment = new Sort();
-        this.defensiveEquipment = new Philtre();
+        type = MAGICIEN;
+        setHP(3);
+        setStrength(8);
+        offensiveEquipment = new Sort();
+        defensiveEquipment = new Philtre();
     }
 
 
