@@ -18,11 +18,9 @@ public class Arme extends EquipementOffensif implements Case {
         return ARME;
     }
 
-
-
     @Override
     public void interaction(Personnage player) {
-        if (player instanceof Guerrier) {
+        if (player instanceof Guerrier || !isAlreadyEquippedByPlayer(player)) {
             player.setTotalStrength(strengthBonus);
         }
     }

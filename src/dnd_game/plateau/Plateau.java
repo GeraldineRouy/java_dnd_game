@@ -40,57 +40,57 @@ public class Plateau {
         }
 
         //Ajout des gobelins avec une boucle
-        for (int i = 3; i <= 30 ; i += 3) {
+        for (int i = 2; i <= 29 ; i += 3) {
             boardList.set(i, new Gobelin());
         }
 
         // Ajouter les ennemis
-        boardList.set(45, new Dragon());
-        boardList.set(52, new Dragon());
-        boardList.set(56, new Dragon());
-        boardList.set(62, new Dragon());
+        boardList.set(44, new Dragon());
+        boardList.set(51, new Dragon());
+        boardList.set(55, new Dragon());
+        boardList.set(61, new Dragon());
 
-        boardList.set(10, new Sorcier());
-        boardList.set(20, new Sorcier());
-        boardList.set(25, new Sorcier());
-        boardList.set(32, new Sorcier());
+        boardList.set(9, new Sorcier());
+        boardList.set(19, new Sorcier());
+        boardList.set(24, new Sorcier());
+        boardList.set(31, new Sorcier());
+        boardList.set(34, new Sorcier());
         boardList.set(35, new Sorcier());
         boardList.set(36, new Sorcier());
-        boardList.set(37, new Sorcier());
-        boardList.set(40, new Sorcier());
-        boardList.set(44, new Sorcier());
-        boardList.set(47, new Sorcier());
+        boardList.set(39, new Sorcier());
+        boardList.set(43, new Sorcier());
+        boardList.set(46, new Sorcier());
 
         // Ajouter les équipements
-        boardList.set(2, new Massue());
-        boardList.set(5, new Massue());
-        boardList.set(11, new Massue());
-        boardList.set(22, new Massue());
-        boardList.set(38, new Massue());
+        boardList.set(1, new Massue());
+        boardList.set(4, new Massue());
+        boardList.set(10, new Massue());
+        boardList.set(21, new Massue());
+        boardList.set(37, new Massue());
 
-        boardList.set(19, new Epee());
-        boardList.set(26, new Epee());
-        boardList.set(42, new Epee());
-        boardList.set(53, new Epee());
+        boardList.set(18, new Epee());
+        boardList.set(25, new Epee());
+        boardList.set(41, new Epee());
+        boardList.set(52, new Epee());
 
-        boardList.set(1, new Eclair());
-        boardList.set(4, new Eclair());
-        boardList.set(8, new Eclair());
-        boardList.set(17, new Eclair());
-        boardList.set(23, new Eclair());
+        boardList.set(0, new Eclair());
+        boardList.set(3, new Eclair());
+        boardList.set(7, new Eclair());
+        boardList.set(16, new Eclair());
+        boardList.set(22, new Eclair());
 
+        boardList.set(47, new BouleDeFeu());
         boardList.set(48, new BouleDeFeu());
-        boardList.set(49, new BouleDeFeu());
 
-        boardList.set(7, new Potion());
-        boardList.set(13, new Potion());
-        boardList.set(31, new Potion());
-        boardList.set(33, new Potion());
-        boardList.set(39, new Potion());
-        boardList.set(43, new Potion());
+        boardList.set(6, new Potion());
+        boardList.set(12, new Potion());
+        boardList.set(30, new Potion());
+        boardList.set(32, new Potion());
+        boardList.set(38, new Potion());
+        boardList.set(42, new Potion());
 
-        boardList.set(28, new GrandePotion());
-        boardList.set(41, new GrandePotion());
+        boardList.set(27, new GrandePotion());
+        boardList.set(40, new GrandePotion());
 
     }
 

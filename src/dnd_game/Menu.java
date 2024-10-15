@@ -7,6 +7,16 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The {@code Menu} class handles displaying instructions, messages, and
+ * interactions to the player during the game. It provides various methods
+ * to prompt the player for input, show game status, and narrate in-game events
+ * like attacks, item pickups, and player movements on the board.
+ *
+ * The class primarily serves as a user interface for interacting with the player
+ * via the console. It is not responsible for game logic, but rather for
+ * presenting information and handling input/output operations.
+ */
 public class Menu {
 
     public Menu() {
@@ -194,5 +204,13 @@ public class Menu {
 
     public void displayPotionInteraction(String playerName, int healthBonus) {
         System.out.println("Super !!!" + playerName + " boit une potion qui lui donne " + healthBonus + "points de vie !");
+    }
+
+    public void displayPlayerIsAlreadyEquippedByThisItem (String playerName, String itemName) {
+        System.out.println(playerName + " est déjà équipé avec " + itemName + ".");
+    }
+
+    public void displayEnemyFlight(String enemyName) {
+        System.out.println(enemyName + " est blessé et prend la fuite !");
     }
 }
