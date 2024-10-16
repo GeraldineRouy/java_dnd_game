@@ -117,7 +117,7 @@ public class Plateau {
      *
      * @return la taille du plateau.
      */
-    private int size() {
+    public int size() {
         return boardList.size();
     }
 
