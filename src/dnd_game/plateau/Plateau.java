@@ -14,40 +14,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * La classe <code>Plateau</code> représente un plateau de jeu constitué de cases.
- * Chaque case peut contenir un personnage, un équipement ou être vide.
- * Le plateau est initialisé avec des ennemis, des équipements et des potions à des positions spécifiques.
+ * The <code>Plateau</code> class represents the game board where the characters interact with various cases.
+ * It initializes the board with empty cases, enemies, and offensive equipment.
  */
 public class Plateau {
 
     private List<Case> boardList;
 
     /**
-     * Constructeur de la classe <code>Plateau</code>.
-     * Initialise le plateau en créant les cases et en plaçant des éléments spécifiques sur celles-ci.
+     * Constructs a <code>Plateau</code> object and initializes the board with cases.
      */
     public Plateau() {
         initializeBoard();
     }
 
     /**
-     * Initialise le plateau en remplissant les cases avec des instances de
-     * <code>CaseVide</code>, des ennemis, des équipements et des potions.
+     * Initializes the board by populating it with empty cases, enemies, and equipment.
+     * This method sets up the positions of different types of cases on the board.
      */
     private void initializeBoard() {
         boardList = new ArrayList<>();
 
         for (int i = 0; i < 64; i++) {
-            // initialisation des cases vides
+            // initialize empty cases
             boardList.add(new CaseVide());
         }
 
-        //Ajout des gobelins avec une boucle
+        /// Add goblins with a loop
         for (int i = 2; i <= 29 ; i += 3) {
             boardList.set(i, new Gobelin());
         }
 
-        // Ajouter les ennemis
+        // Add enemies
         boardList.set(44, new Dragon());
         boardList.set(51, new Dragon());
         boardList.set(55, new Dragon());
@@ -64,7 +62,7 @@ public class Plateau {
         boardList.set(43, new Sorcier());
         boardList.set(46, new Sorcier());
 
-        // Ajouter les équipements
+        // Add equipment
         boardList.set(1, new Massue());
         boardList.set(4, new Massue());
         boardList.set(10, new Massue());
@@ -98,11 +96,11 @@ public class Plateau {
     }
 
     /**
-     * Récupère la case à l'index spécifié du plateau.
+     * Retrieves the case at the specified index on the board.
      *
-     * @param index l'index de la case à récupérer.
-     * @return la case correspondante à l'index.
-     * @throws PersonnageHorsPlateauException si l'index est en dehors des limites du plateau.
+     * @param index the index of the case to retrieve.
+     * @return the <code>Case</code> at the specified index.
+     * @throws PersonnageHorsPlateauException if the index is out of bounds.
      */
     public Case getCase(int index) {
         if (index >= 0 && index < boardList.size()) {
@@ -113,9 +111,9 @@ public class Plateau {
     }
 
     /**
-     * Renvoie la taille du plateau (nombre total de cases).
+     * Returns the number of cases on the board.
      *
-     * @return la taille du plateau.
+     * @return the size of the board.
      */
     public int size() {
         return boardList.size();
