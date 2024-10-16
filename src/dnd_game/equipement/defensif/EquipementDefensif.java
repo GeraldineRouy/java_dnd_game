@@ -7,6 +7,11 @@ import dnd_game.equipement.Equipement;
  * equipment in the game. This class extends the {@code Equipement} class
  * and serves as an abstract base class for various types of defensive
  * equipment that provide a defense bonus to characters.
+ * <p>
+ * Each defensive equipment has a type and a defense bonus, which are used to calculate
+ * the player's total defense during battles, depending on which type of character is played
+ * (warrior, magician or pangolin).
+ * </p>
  */
 public abstract class EquipementDefensif extends Equipement {
 

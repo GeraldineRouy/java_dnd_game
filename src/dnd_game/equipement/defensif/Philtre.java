@@ -5,7 +5,7 @@ import dnd_game.personnage.Personnage;
 
 /**
  * The {@code Philtre} class represents a potion that provides a
- * defense bonus to characters in the game. This class extends
+ * defense bonus to magicians in the game. This class extends
  * the {@code EquipementDefensif} class and initializes the
  * potion's specific attributes such as its name and defense bonus.
  */

@@ -8,8 +8,10 @@ import dnd_game.plateau.Case;
  * The {@code Ennemi} class represents an enemy in the game.
  * This is an abstract class that serves as a base for specific enemy types
  * such as goblins, dragons, and others.
+ * <p>
  * An enemy can interact with the player by engaging in combat and dealing damage
  * based on its attack strength and the player's defense.
+ * </p>
  */
 
 public abstract class Ennemi extends Personnage implements Case {

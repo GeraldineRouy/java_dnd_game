@@ -16,13 +16,14 @@ import java.util.Random;
 
 /**
  * The {@code Game} class manages the entire flow of the game, from character
- * creation to handling interactions on the game board. It plays the role of
- * the Game Master, directing the player through different phases such as
- * dice rolling, moving on the board, fighting enemies, and interacting with
- * equipment.
- *
+ * creation to handling interactions on the game board.
  * The {@code Game} class also handles restarting or quitting the game based on
  * player choices.
+ * <p>
+ * It plays the role of the Game Master, directing the player through different
+ * phases such as dice rolling, moving on the board, fighting enemies, and
+ * interacting with equipment.
+ * </p>
  */
 public class Game {
 

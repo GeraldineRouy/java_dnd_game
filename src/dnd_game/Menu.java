@@ -12,10 +12,11 @@ import java.util.Scanner;
  * interactions to the player during the game. It provides various methods
  * to prompt the player for input, show game status, and narrate in-game events
  * like attacks, item pickups, and player movements on the board.
- *
+ *<p>
  * The class primarily serves as a user interface for interacting with the player
  * via the console. It is not responsible for game logic, but rather for
  * presenting information and handling input/output operations.
+ * </p>
  */
 public class Menu {
 

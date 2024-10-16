@@ -5,7 +5,7 @@ import dnd_game.personnage.Personnage;
 
 /**
  * The {@code Bouclier} class represents a shield, which is a type of
- * defensive equipment that provides a defense bonus to characters.
+ * defensive equipment that provides a defense bonus to warriors.
  * This class extends the {@code EquipementDefensif} class and
  * initializes the shield's specific attributes such as its name
  * and defense bonus.

@@ -6,9 +6,11 @@ import dnd_game.personnage.ennemi.Ennemi;
 
 /**
  * The {@code Personnage} class represents a character in the game,
- * which could be a player (playable) character or an enemy (non playable character).
- * This abstract class defines common attributes and behaviors for all characters,
- * such as health points, strength, and equipment.
+ * which could be a player (playable) character or an enemy (non-playable character).
+ * <p>
+ * This abstract class defines common attributes and behaviors for all characters
+ * (player and enemies), such as health points, strength, and equipment.
+ * </p>
  */
 
 public abstract class Personnage {
