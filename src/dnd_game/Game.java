@@ -48,7 +48,7 @@ public class Game {
      *
      * @return the player character, either a Warrior, a Wizard, or a Pangolin.
      */
-    public Personnage characterCreation() {
+    private Personnage characterCreation() {
 
         int characterType = menu.askCharacterType();
 
@@ -107,7 +107,7 @@ public class Game {
 
         //position du joueur initiale en case 1
         int playerPosition = 0;
-        menu.displayPlayerPositionOnIteration4Board(playerPosition, board.getCase(playerPosition));
+        menu.displayPlayerPositionOnBoard(playerPosition, board.getCase(playerPosition));
 
         //boucle de jeu tant que joueur est pas arrivé à case 4
         while (playerPosition < board.size()) {
@@ -145,7 +145,7 @@ public class Game {
     /**
      * Handles the decision to restart or quit the game at the end.
      */
-    public void restartGameOrQuit() {
+    private void restartGameOrQuit() {
         int playerChoice = menu.displayEndChoice();
 
         if (playerChoice == 2) {
@@ -158,7 +158,7 @@ public class Game {
      * Checks if the player is still alive after an interaction or combat.
      * If the player dies, it ends the game; otherwise, it displays the remaining HP.
      */
-    public void verifyIfPlayerSurvives() {
+    private void verifyIfPlayerSurvives() {
         if (player.isDead()) {
             menu.displayPlayerDeath(player.getName());
             restartGameOrQuit();
@@ -176,7 +176,7 @@ public class Game {
      * @return the new position of the player on the board.
      * @throws PersonnageHorsPlateauException if the player moves outside the board.
      */
-    public int moveCharacterOnBoard(int playerPosition, int diceRoll) throws PersonnageHorsPlateauException {
+    private int moveCharacterOnBoard(int playerPosition, int diceRoll) throws PersonnageHorsPlateauException {
 
         playerPosition = playerPosition + diceRoll;
 
@@ -200,8 +200,8 @@ public class Game {
      * @param currentCase the current case on the board.
      * @throws PersonnageHorsPlateauException if the player moves outside the board.
      */
-    public void playerInteractsWithBoard(int playerPosition, Case currentCase) throws PersonnageHorsPlateauException {
-        menu.displayPlayerPositionOnIteration4Board(playerPosition, currentCase);
+    private void playerInteractsWithBoard(int playerPosition, Case currentCase) throws PersonnageHorsPlateauException {
+        menu.displayPlayerPositionOnBoard(playerPosition, currentCase);
 
         currentCase.interaction(player);
         if (currentCase instanceof Ennemi) {
@@ -227,7 +227,7 @@ public class Game {
      *
      * @param enemy the enemy that the player is fighting.
      */
-    public void playerFight(Ennemi enemy) {
+    private void playerFight(Ennemi enemy) {
         player.attackEnemy(enemy);
         menu.displayPlayerAttack(player.getName(), enemy.getName(), player.getTotalStrength());
         if (enemy.isDead()) {
@@ -244,7 +244,7 @@ public class Game {
      *
      * @param offensiveEquipment the offensive equipment found by the player.
      */
-    public void playerGetsOffensiveEquipment(EquipementOffensif offensiveEquipment) {
+    private void playerGetsOffensiveEquipment(EquipementOffensif offensiveEquipment) {
         if (offensiveEquipment instanceof Arme) {
             warriorGetsWeapon((Arme) offensiveEquipment);
         }
@@ -259,7 +259,7 @@ public class Game {
      *
      * @param weapon the weapon found by the warrior.
      */
-    public void warriorGetsWeapon(Arme weapon) {
+    private void warriorGetsWeapon(Arme weapon) {
         if (player instanceof Guerrier) {
             menu.displayOffensiveEquipmentInteraction(player.getName(), weapon.toString(), weapon.getStrengthBonus(), player.getTotalStrength());
         } else if (player instanceof Guerrier || Objects.equals(weapon.getName(), player.getOffensiveEquipmentName())) {
@@ -275,7 +275,7 @@ public class Game {
      *
      * @param spell the spell found by the wizard.
      */
-    public void wizardGetsSpell(Sort spell) {
+    private void wizardGetsSpell(Sort spell) {
         if (player instanceof Magicien) {
             menu.displayOffensiveEquipmentInteraction(player.getName(), spell.toString(), spell.getStrengthBonus(), player.getTotalStrength());
         } else {
@@ -289,7 +289,7 @@ public class Game {
      *
      * @return the result of the dice roll (between 1 and 6).
      */
-    public int rollDice() {
+    private int rollDice() {
         Random random = new Random();
         int diceRoll = random.nextInt(6) + 1;
 

@@ -13,30 +13,33 @@ import dnd_game.equipement.offensif.sorts.Eclair;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * La classe <code>Plateau</code> représente un plateau de jeu constitué de cases.
+ * Chaque case peut contenir un personnage, un équipement ou être vide.
+ * Le plateau est initialisé avec des ennemis, des équipements et des potions à des positions spécifiques.
+ */
 public class Plateau {
 
     private List<Case> boardList;
 
+    /**
+     * Constructeur de la classe <code>Plateau</code>.
+     * Initialise le plateau en créant les cases et en plaçant des éléments spécifiques sur celles-ci.
+     */
     public Plateau() {
         initializeBoard();
     }
 
-    public void initialise4CasesBoard() {
-
-        boardList = new ArrayList<>();
-
-        boardList.add(new CaseVide());
-        boardList.add(new Gobelin());
-        boardList.add(new Epee());
-        boardList.add(new Potion());
-
-    }
-
-    public void initializeBoard() {
+    /**
+     * Initialise le plateau en remplissant les cases avec des instances de
+     * <code>CaseVide</code>, des ennemis, des équipements et des potions.
+     */
+    private void initializeBoard() {
         boardList = new ArrayList<>();
 
         for (int i = 0; i < 64; i++) {
-            boardList.add(new CaseVide()); // initialisation des cases vides
+            // initialisation des cases vides
+            boardList.add(new CaseVide());
         }
 
         //Ajout des gobelins avec une boucle
@@ -94,6 +97,13 @@ public class Plateau {
 
     }
 
+    /**
+     * Récupère la case à l'index spécifié du plateau.
+     *
+     * @param index l'index de la case à récupérer.
+     * @return la case correspondante à l'index.
+     * @throws PersonnageHorsPlateauException si l'index est en dehors des limites du plateau.
+     */
     public Case getCase(int index) {
         if (index >= 0 && index < boardList.size()) {
             return boardList.get(index);
@@ -102,9 +112,12 @@ public class Plateau {
         }
     }
 
-
-
-    public int size() {
+    /**
+     * Renvoie la taille du plateau (nombre total de cases).
+     *
+     * @return la taille du plateau.
+     */
+    private int size() {
         return boardList.size();
     }
 

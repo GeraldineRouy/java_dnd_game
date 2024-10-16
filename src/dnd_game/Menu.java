@@ -3,7 +3,6 @@ package dnd_game;
 import dnd_game.plateau.Case;
 import dnd_game.personnage.Personnage;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -20,9 +19,6 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    public Menu() {
-
-    }
 
     private void displayStarLine() {
         System.out.println("*************************************************");
@@ -111,7 +107,7 @@ public class Menu {
     }
 
 
-    public void displayPlayerPositionOnIteration4Board (int playerPosition, Case caseName) {
+    public void displayPlayerPositionOnBoard(int playerPosition, Case caseName) {
         displayStarLine();
         System.out.println("Vous êtes en case " + (playerPosition+1) + " : " + caseName.toString() + " !");
     }
@@ -154,16 +150,6 @@ public class Menu {
         System.out.println("A bientôt " + playerName + " !");
     }
 
-
-    public void displayInteraction(String playerName, String item) {
-        displayStarLine();
-        System.out.println(playerName + " récupère l'objet " + item + " !");
-    }
-
-
-    public void displayPlayerCantTakeItem(String playerName, String playerType, String item) {
-        System.out.println("Malheureusement " + playerName + " est un " + playerType + " et ne peut pas s'équiper de " + item + ".");
-    }
 
     public void displayPlayerDeath(String playerName) {
         displayStarLine();
