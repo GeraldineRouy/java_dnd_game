@@ -88,8 +88,8 @@ public abstract class Personnage {
      *
      * @return {@code true} if the character is dead, {@code false} otherwise.
      */
-    protected boolean isDead(){
-        return this.healthPoints < 1;
+    public boolean isDead(){
+        return this.healthPoints <= 0;
     }
 
     /**
@@ -97,7 +97,7 @@ public abstract class Personnage {
      *
      * @param enemy the enemy character being attacked.
      */
-    protected void attackEnemy (Ennemi enemy) {
+    public void attackEnemy(Ennemi enemy) {
         enemy.setHP(enemy.getHP() - totalStrength);
     }
 

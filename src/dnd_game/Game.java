@@ -205,8 +205,7 @@ public class Game {
 
         currentCase.interaction(player);
         if (currentCase instanceof Ennemi) {
-            menu.displayEnemyAttack(((Ennemi) currentCase).getName(), player.getName(), ((Ennemi) currentCase).getStrength(), player.getDefensiveEquipmentName(), player.getDefenseBonus());
-            playerFight((Ennemi) currentCase);
+            letTheFightBegin((Ennemi) currentCase);
             verifyIfPlayerSurvives();
         }
         if (currentCase instanceof EquipementOffensif) {
@@ -227,12 +226,15 @@ public class Game {
      *
      * @param enemy the enemy that the player is fighting.
      */
-    private void playerFight(Ennemi enemy) {
-        player.attackEnemy(enemy);
-        menu.displayPlayerAttack(player.getName(), enemy.getName(), player.getTotalStrength());
+    private void letTheFightBegin(Ennemi enemy) {
+        menu.displayPlayerAttack(player.getName(), enemy.getName(), player.getStrength());
+        int playerDamage = enemy.attackPlayer(player);
+
         if (enemy.isDead()) {
             menu.displayVictory(enemy.getName());
         } else {
+            menu.displayEnemyAttack(enemy.getName(), player.getName(), playerDamage, player.getDefensiveEquipmentName(), player.getDefenseBonus());
+            player.setHP(player.getHP() - playerDamage);
             menu.displayEnemyFlight(enemy.getName());
         }
     }

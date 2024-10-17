@@ -40,9 +40,11 @@ public abstract class Ennemi extends Personnage implements Case {
      *
      * @param player the player character who is being attacked by the enemy.
      */
-    public void attackPlayer(Personnage player) {
+    public int attackPlayer(Personnage player) {
         if (strengthPoints > player.getDefenseBonus()) {
-            player.setHP(player.getHP()-strengthPoints);
+            return (player.getHP()-strengthPoints);
+        } else {
+            return 0;
         }
     }
 
@@ -54,6 +56,6 @@ public abstract class Ennemi extends Personnage implements Case {
      */
     @Override
     public void interaction(Personnage player) {
-        attackPlayer(player);
+        player.attackEnemy(this);
     }
 }

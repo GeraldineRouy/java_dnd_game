@@ -158,8 +158,7 @@ public class Menu {
     }
 
     public void displayPlayerAttack(String playerName, String enemyName, int playerStrength) {
-        System.out.println(playerName + " contre-attaque !  \n" +
-                enemyName + " subit " + playerStrength + " points de dégat.");
+        System.out.println(playerName + " attaque " + enemyName + " qui subit " + playerStrength + " points de dégat.");
     }
 
     public void displayPlayerHP(int playerHP, String playerName) {
@@ -168,8 +167,8 @@ public class Menu {
     }
 
     public void displayEnemyAttack (String enemyName, String playerName, int damage, String defensiveEquipmentName, int defenseBonus) {
-        System.out.println("Attention ! le " + enemyName + " porte un coup à " + playerName + " !" +
-                "\nCe dernier subit " + damage + " points de dégats, mais son " + defensiveEquipmentName + " en absorbe " + defenseBonus + ".");
+        System.out.println("Attention ! le " + enemyName + " contre-attaque !!!\n" +
+                playerName + " subit " + damage + " points de dégats, car son " + defensiveEquipmentName + " en absorbe " + defenseBonus + ".");
     }
 
     public void displayVictory (String enemyName) {
@@ -190,7 +189,7 @@ public class Menu {
     }
 
     public void displayPotionInteraction(String playerName, int healthBonus) {
-        System.out.println("Super !!!" + playerName + " boit une potion qui lui donne " + healthBonus + "points de vie !");
+        System.out.println("Super !!! " + playerName + " boit une potion qui lui donne " + healthBonus + " points de vie !");
     }
 
     public void displayPlayerIsAlreadyEquippedByThisItem (String playerName, String itemName) {
@@ -198,6 +197,6 @@ public class Menu {
     }
 
     public void displayEnemyFlight(String enemyName) {
-        System.out.println(enemyName + " est blessé et prend la fuite !");
+        System.out.println("Le " + enemyName + " est blessé et prend la fuite !");
     }
 }
